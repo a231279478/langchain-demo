@@ -30,7 +30,7 @@ class QwenLLM(LLM):
             )
             print('result qwen content:', response.choices[0].message.content.split('\nObservation')[0])
             print('-------------------------------------------------------------------------------')
-            return response.choices[0].message.content
+            return response.choices[0].message.content.split('\nObservation')[0]
         else:
             print('else 执行了')
             print('call qwen content:',prompt)
@@ -42,7 +42,7 @@ class QwenLLM(LLM):
             )
             print('result qwen content:', response.choices[0].message.content.split('\nObservation')[0])
             print('-------------------------------------------------------------------------------')
-            return response.choices[0].message.content
+            return response.choices[0].message.content.split('\nObservation')[0]
 
 
     @property
