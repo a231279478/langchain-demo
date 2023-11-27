@@ -56,4 +56,4 @@ chain = MultiPromptChain(
     silent_errors=True,
 )
 
-print(chain.run(input="给张三写一封中秋节日快乐的邮件",system="xxxx"))
+print(chain.run(input="帮我查询明天深圳的天气",history=""))

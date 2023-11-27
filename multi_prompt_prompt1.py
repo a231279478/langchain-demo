@@ -21,9 +21,6 @@ REMEMBER: "next_inputs" the original input.
 << CANDIDATE PROMPTS >>
 {destinations}
 
-<< HISTORY >>
-{{history}}
-
 << INPUT >>
 {{input}}
 

@@ -9,7 +9,7 @@ os.environ["OPENAI_API_KEY"] = 'none'
 os.environ["OPENAI_API_BASE"] = 'http://region-9.seetacloud.com:25540/v1'
 
 
-llm = ChatOpenAI()
+llm = ChatOpenAI(verbose=True)
 tools = load_tools(["serpapi", "llm-math"], llm=llm)
 tools.append(EmailAddressTool())
 tools.append(SendMailTool())
@@ -17,4 +17,4 @@ tools.append(SendMailTool())
 agent = initialize_agent(tools, llm, agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION, verbose=True)
 
 # 执行代理
-print(agent.run(""))
+print(agent.run("帮我查询下以巴冲突的最新消息"))
