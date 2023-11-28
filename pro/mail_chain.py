@@ -8,10 +8,8 @@ from langchain.callbacks.manager import (
 )
 from langchain.chains.base import Chain
 from pydantic import Extra
-
 import requests
-
-
+from flask import Flask, request, jsonify, send_file
 class MailChain(Chain):
 
     output_key: str = "result"  #: :meta private:
@@ -53,8 +51,13 @@ class MailChain(Chain):
         # any callbacks that are registered on the outer run.
         # You can always obtain a callback manager for this by calling
         # `run_manager.get_child()` as shown below.
+        token = request.headers.get('X-Access-Token')
 
-        response = requests.post(url=self.base_url, json=inputs)
+        headers = {
+            "X-Access-Token": token,
+            'Content-Type': 'application/json'
+        }
+        response = requests.post(url=self.base_url, json=inputs,headers=headers)
 
         # If you want to log something about this run, you can do so by calling
         # methods on the `run_manager`, as shown below. This will trigger any
